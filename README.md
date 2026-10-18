@@ -2,6 +2,10 @@
 
 CASEFILE is an evidence-first bug investigation and verification platform for Python projects. It helps teams turn a bug report into a reproducible test, verify the original failure, validate a fix, and keep a record of the evidence.
 
+## License
+
+CASEFILE is licensed under the [MIT License](LICENSE).
+
 ## Stack
 
 - Frontend: React + Vite + TypeScript + Tailwind CSS
