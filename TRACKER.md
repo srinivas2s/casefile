@@ -38,7 +38,7 @@ host.
 |---|---|---|
 | React, Vite, TypeScript configuration | PASS | Frontend build and type check pass; Vite/Tailwind were upgraded. |
 | Minimal, professional visual design | PARTIAL | Existing dark dashboard is consistent, but no design/usability review was performed. |
-| Responsive dashboard and sidebar | PARTIAL | Dashboard grids adapt; sidebar remains fixed-width with no mobile collapse. |
+| Responsive dashboard and sidebar | PASS | Sidebar switches to compact, labeled-accessible icon navigation on small screens; dashboard and forms adapt to narrow viewports. |
 | Dashboard statistics use API data | PASS | Dashboard loads `/api/dashboard`; backend aggregates persisted records. |
 | Investigation listing, search, filtering | PASS | Listing requests search/status filters from the API. |
 | Investigation form and validation | PASS | Required fields are checked in UI and Pydantic schemas. |
@@ -198,6 +198,8 @@ host.
 - Frontend: `npm ci --dry-run` — **passed**.
 - Live API smoke: health, settings, dashboard, docs, create, preview, blocked run, and execution history succeeded on a disposable server/database.
 - Frontend integration smoke: a fresh Vite page at `http://127.0.0.1:5173` rendered the dashboard and persisted execution rows; its dashboard request returned HTTP 200.
+- Frontend visual refresh: reviewed the dashboard at desktop size and the new-investigation form at 390px width; navigation, page content, and form controls remained visible and usable.
+- Frontend checks after visual refresh: `npm run build`, `npm run lint`, and `npm run test -- --run` — **passed** (1 test).
 - Current local API: restarted from the backend virtual environment on `127.0.0.1:8000`; `/api/health` returned `{"status":"ok","service":"CASEFILE"}`.
 - Persistence: investigation and blocked execution remained after stopping and restarting the server against the same temporary database.
 - HTML report escaping and JSON/HTML download endpoints verified by backend tests.
@@ -215,6 +217,12 @@ host.
   `frontend/src/pages/InvestigationDetailPage.tsx`,
   `frontend/src/pages/NewInvestigationPage.tsx`, `frontend/src/types.ts`,
   `frontend/vite.config.ts`, `.github/workflows/ci.yml`.
+- Updated in the follow-up visual refresh: `frontend/src/components/Layout.tsx`,
+  `frontend/src/index.css`, `frontend/src/pages/DashboardPage.tsx`,
+  `frontend/src/pages/InvestigationsPage.tsx`,
+  `frontend/src/pages/InvestigationDetailPage.tsx`,
+  `frontend/src/pages/ExecutionsPage.tsx`, `frontend/src/pages/SettingsPage.tsx`,
+  `frontend/src/pages/NewInvestigationPage.tsx`, and `frontend/src/App.test.tsx`.
 - Added: `CONTRIBUTING.md`, `SECURITY.md`, `TRACKER.md`,
   `backend/requirements-dev.txt`, `frontend/.eslintrc.cjs`.
 
